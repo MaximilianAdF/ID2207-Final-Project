@@ -140,10 +140,8 @@ const LoginView: React.FC = () => {
             </button>
           </form>
 
-          {/* No demo quick-fill in production UI */}
         </div>
 
-        {/* Footer note */}
         <span className="sr-only">SEP Login</span>
       </div>
     </div>
