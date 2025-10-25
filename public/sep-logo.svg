@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="SEP logo">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#g)"/>
+  <g fill="#fff" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="50%" y="38" font-size="22" text-anchor="middle">SEP</text>
+  </g>
+</svg>
