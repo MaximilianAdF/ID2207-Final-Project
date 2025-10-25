@@ -31,6 +31,9 @@ const CustomerFormView: React.FC = () => {
     parties: false,
   });
 
+  //Label string, input/label id
+  type idStringTuple = [string, string];
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -40,6 +43,47 @@ const CustomerFormView: React.FC = () => {
     //if (error) setError(null);
   };
 
+  const checkboxes: idStringTuple[] = [
+    ["Decorations", "Decorations"],
+    ["Breakfast, Lunch, Dinner", "Food"],
+    ["Parties", "Parties"],
+    ["Soft/Hot drinks", "Drinks"],
+    ["Photos/Filming", "Photos"],
+  ];
+
+  const createCheckBoxFieldsCB = (arr: idStringTuple) => {
+    return (
+      <div className="pl-5">
+        <input id={arr[1]} name={arr[1]} type="checkbox"></input>
+        <label className="pl-2" htmlFor={arr[1]}>
+          {arr[0]}
+        </label>
+      </div>
+    );
+  };
+
+  const inputFields: idStringTuple[] = [
+    ["Record Number", "RecordNumber"],
+    ["Client Name", "ClientName"],
+    ["Event Type", "EventType"],
+  ];
+
+  const createInputFieldCB = (arr: idStringTuple) => {
+    return (
+      <div className="flex items-center gap-4 mb-10">
+        <label className="w-32" htmlFor={arr[1]}>
+          {arr[0]}
+        </label>
+        <input
+          className="px-3 border border-gray-400 rounded focus:outline-none focus:border-blue-500"
+          id={arr[1]}
+          name={arr[1]}
+          required
+        />
+      </div>
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -47,40 +91,7 @@ const CustomerFormView: React.FC = () => {
     <div className="max-w-md mx-auto flex flex-col items-center justify-center min-h-screen">
       <div className="bg-gray-300 p-10 rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className="flex gap-4 flex-col">
-          <div>
-            <div className="flex items-center gap-4 mb-4">
-              <label className="w-32 " htmlFor="RecordNumber">
-                Record Number:{" "}
-              </label>
-              <input
-                className="px-3 border border-gray-400 rounded focus:outline-none focus:border-blue-500"
-                id="RecordNumber"
-                name="RecordNumber"
-              />
-            </div>
-            <div className="flex items-center gap-4 mb-4">
-              <label className="w-32 " htmlFor="ClientName">
-                Client Name:{" "}
-              </label>
-              <input
-                className="px-3  border border-gray-400 rounded focus:outline-none focus:border-blue-500"
-                id="ClientName"
-                name="ClientName"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-4 mb-10">
-              <label className="w-32" htmlFor="type">
-                Event Type:{" "}
-              </label>
-              <input
-                className="px-3 border border-gray-400 rounded focus:outline-none focus:border-blue-500"
-                id="type"
-                name="type"
-                required
-              />
-            </div>
-          </div>
+          <div>{inputFields.map(createInputFieldCB)}</div>
           <div className="flex items-center justify-between mb-4">
             <div>
               <label className="w-32" htmlFor="Start">
@@ -119,40 +130,7 @@ const CustomerFormView: React.FC = () => {
             />
           </div>
           <div className="border grid h-40 grid-cols-2 content-center gap-6 mb-5">
-            <div className="pl-5">
-              <input
-                id="Decorations"
-                name="Decorations"
-                type="checkbox"
-              ></input>
-              <label className="pl-2" htmlFor="Decorations">
-                Decorations
-              </label>
-            </div>
-            <div className="pl-5">
-              <input id="Food" name="Food" type="checkbox"></input>
-              <label className="pl-2" htmlFor="Food">
-                Breakfast, Lunch, Dinner
-              </label>
-            </div>
-            <div className="pl-5">
-              <input id="Parties" name="Parties" type="checkbox"></input>
-              <label className="pl-2" htmlFor="Parties">
-                Parties
-              </label>
-            </div>
-            <div className="pl-5">
-              <input id="Drinks" name="Drinks" type="checkbox"></input>
-              <label className="pl-2" htmlFor="Drinks">
-                Soft/Hot drinks
-              </label>
-            </div>
-            <div className="pl-5">
-              <input id="Photo" name="Photo" type="checkbox"></input>
-              <label className="pl-2" htmlFor="Photo">
-                Photos/Filming
-              </label>
-            </div>
+            {checkboxes.map(createCheckBoxFieldsCB)}
           </div>
           <div className="flex items-center justify-between">
             <label htmlFor="Budget">Expected budget: </label>
